@@ -1,4 +1,4 @@
-import statistics
+from statistics import mean as m
 
 
 admins = { "Python" : " Pass@123", "User2" : "Pass@456"}
@@ -16,7 +16,21 @@ def enterGrades():
 	else:
 		print("Student do not exist!")
 
-    print(students)
+   print(students)
+
+def removeStudent():
+	nameToRemove = input ("What student do you want to remove?: ")
+	if removeStudent in students:
+		print("Removing Student ...")
+		del students[nameToRemove]
+
+def studentsAvgs():
+	for eachStudent in students:
+		gradeList = students[eachStudent]
+		avgGrade = m(gradeList)
+
+		print(eachStudent, "has an average grade of:" , avgGrade)
+
 
 
 def main():
@@ -33,12 +47,18 @@ def main():
 	action = input ("What whould you like to do today? (Enter a Number!) ")
 
 	if action == "1":
+		enterGrades()
 		print("1")
 
 	elif action == "2":
+		removeStudent()
 		print("2")
 	elif action == "3":
+		studentsAvgs()
 		print("3")
+
+	elif action == "4":
+		exit()
 
 	else:
 		print("No valid choice was given, try again")
